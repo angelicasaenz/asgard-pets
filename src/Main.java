@@ -1,44 +1,26 @@
-import java.util.Scanner;
+import model.Alimento;
+import model.Inventario;
 
 public class Main {
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Inventario inventario = new Inventario();
+        Alimento a1 = new Alimento(1, "BR For Cat", 23000, 3);
+        Alimento a2 = new Alimento(1, "Cat chow", 23000, 3);
+        Alimento a3 = new Alimento(1, "Alpiste", 23000, 3);
+        Alimento a4 = new Alimento(1, "Mirringo", 23000, 3);
+        Alimento a5 = new Alimento(1, "Felix", -3, 3);
+        Alimento a6 = new Alimento(1, "Fancy Feast", 23000, 3);
 
-        int opcion = 0;
-        while (opcion != 8){
-            Menu.mostrar();
-            opcion = Menu.leerOpcion(sc);
-            switch (opcion) {
-                case 1:
-                    Operaciones.registrar(sc);
-                    break;
-                case 2:
-                    Operaciones.buscarProducto(sc);
-                    break;
-                case 3:
-                    Operaciones.mostrarInventario(sc);
-                    break;
-                case 4:
-                    Operaciones.actualizarCantidad(sc);
-                    break;
-                case 5:
-                    Operaciones.totalProducto(sc);
-                    break;
-                case 6:
-                    Operaciones.eliminarProducto(sc);
-                    break;
-                case 7:
-                    Operaciones.mostrarProductosAgotados();
-                    break;
-                case 8:
-                    System.out.println("Gracias por utilizar el gestor de inventario de Asgard Pets, hasta pronto!");
-                    break;
-                default:
-                    System.out.println("Por favor ingrese una opción valida");
-            }
-        }
 
+        inventario.registrarProducto(a1);
+        inventario.registrarProducto(a2);
+        inventario.registrarProducto(a3);
+        inventario.registrarProducto(a4);
+        inventario.registrarProducto(a5);
+        inventario.registrarProducto(a6);
+
+        inventario.mostrarInventario();
 
     }
 }

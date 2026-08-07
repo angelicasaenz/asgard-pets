@@ -54,8 +54,10 @@ public class Inventario {
 
     }
 
-    public void  mostrarInventario(){
-        System.out.println(productos);
+    public void mostrarInventario(){
+        for(int i = 0; i < productos.size(); i++){
+            System.out.println(productos.get(i));
+        }
     }
 
 }
