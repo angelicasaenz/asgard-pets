@@ -26,7 +26,37 @@ public class Inventario {
         }
     }
 
-    public void  actualizarProducto(int id){
+    public void  actualizarProducto(int id, String nombreNuevo, double precioNuevo, int cantidadNueva){
+        for(int i = 0; i < productos.size(); i++){
+            if(id == productos.get(i).getId()){
+                System.out.println(productos.get(i));
+                productos.get(i).setNombre(nombreNuevo);
+                productos.get(i).setPrecio(precioNuevo);
+                productos.get(i).setCantidad(cantidadNueva);
+                System.out.println("Producto actualizado correctamente");
+                return;
+            }
+        }
+        System.out.println("Producto no encontrado");
 
     }
+
+    public void  eliminarProducto(int id){
+        for(int i = 0; i < productos.size(); i++){
+            if(id == productos.get(i).getId()){
+                System.out.println(productos.get(i));
+                productos.remove(i);
+                System.out.println("Producto eliminado correctamente");
+                return;
+            }
+        }
+        System.out.println("Producto no encontrado");
+
+    }
+
+    public void  mostrarInventario(){
+        System.out.println(productos);
+    }
+
 }
+
