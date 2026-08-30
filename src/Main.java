@@ -1,5 +1,7 @@
 import model.Alimento;
+import model.Cliente;
 import model.Inventario;
+import model.Venta;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,5 +24,12 @@ public class Main {
 
         inventario.mostrarInventario();
 
+        Cliente c1 = new Cliente("1000234232", "Catalina", "catalina@gmail.com");
+        Venta v1 = new Venta(1, c1);
+        v1.agregarProducto(a1);
+        v1.agregarProducto(a2);
+        v1.agregarProducto(a6);
+
+        v1.mostrarFactura();
     }
 }
