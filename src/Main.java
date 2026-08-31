@@ -1,7 +1,4 @@
-import model.Alimento;
-import model.Cliente;
-import model.Inventario;
-import model.Venta;
+import model.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,5 +28,12 @@ public class Main {
         v1.agregarProducto(a6);
 
         v1.mostrarFactura();
+
+        Mascota m1 = new Mascota(112, "Laika", "gato", 3);
+
+        FundacionAurora f = new FundacionAurora();
+        f.agregarMascota(m1);
+        f.adoptarMascota(12);
+
     }
 }
