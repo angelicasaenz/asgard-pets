@@ -33,7 +33,8 @@ public class Main {
 
         FundacionAurora f = new FundacionAurora();
         f.agregarMascota(m1);
-        f.adoptarMascota(12);
+        f.adoptarMascota(112);
 
+        f.mostrarMascotas();
     }
 }

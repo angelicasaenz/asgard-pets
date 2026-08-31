@@ -25,4 +25,19 @@ public class FundacionAurora {
         }
         System.out.println("No se encontro una mascota con ese ID");
     }
+
+    public void mostrarMascotas(){
+        System.out.println("\n **** LISTADO DE MASCOTAS DISPONIBLES PARA ADOPCIÓN ****");
+        boolean hayMascotas = false;
+        for (Mascota m : mascotas){
+            if (!m.isAdoptado()){
+                System.out.println("- " + m.getId() + " | " + m.getNombre() + " | " + m.getEspecie() + " | " + m.getEdad() + " años.");
+                hayMascotas = true;
+            }
+        }
+        if (!hayMascotas){
+            System.out.println("No hay mascotas disponibles para la adoción");
+
+        }
+    }
 }
