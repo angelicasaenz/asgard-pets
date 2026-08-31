@@ -1,93 +1,74 @@
-# 🐾 Asgard Pets
+# 🐾 Asgard Pets & Fundación Aurora
 
 Asgard Pets es un proyecto personal desarrollado como parte de mi proceso de aprendizaje en Java y desarrollo backend.
 
-El proyecto simula el sistema de una empresa ficticia dedicada a la distribución de alimentos, medicamentos y accesorios para mascotas. Además, la empresa apoya a la Fundación Aurora, una organización ficticia enfocada en el rescate, rehabilitación y adopción responsable de animales en situación de abandono.
+El proyecto simula el sistema de una empresa dedicada a la distribución de alimentos, medicamentos y accesorios para mascotas. Además, la empresa apoya a la **Fundación Aurora**, una organización enfocada en el rescate, rehabilitación y adopción responsable de animales.
 
-El objetivo de este proyecto es evolucionar gradualmente mientras aprendo nuevas tecnologías, pasando de una aplicación de consola hasta una aplicación web desarrollada con Spring Boot.
+El objetivo de este proyecto es evolucionar gradualmente mientras aplico nuevas tecnologías, pasando de un sistema monolítico de consola en Java puro hasta un ecosistema backend completo con Spring Boot.
 
 ---
 
 ## 📖 Estado del proyecto
 
-### ✅ v1.0 - Sistema de Inventario (Finalizada)
+### ✅ v1.0 - Sistema de Inventario Básico (Finalizada)
+Sistema de inventario básico desarrollado en Java utilizando programación estructurada y arreglos.
 
-Sistema de inventario desarrollado con Java básico utilizando arreglos y programación estructurada.
+### 🔨 v2.0 - Core POO & Manejo de Memoria (En desarrollo)
+Reestructuración completa del sistema aplicando **Programación Orientada a Objetos** y **Colecciones (`ArrayList`)** para simular la gestión en memoria RAM mediante un menú interactivo por consola.
 
-### 🔨 v2.0 - Programación Orientada a Objetos (En desarrollo)
-
-Actualmente el proyecto está siendo reestructurado aplicando Programación Orientada a Objetos para construir un sistema más modular y escalable.
-### Funcionalidades
-
-- Registrar productos.
-- Consultar el inventario.
-- Buscar productos.
-- Actualizar cantidades.
-- Generar un reporte del inventario.
-- Validación de datos ingresados por el usuario.
+#### Funcionalidades clave:
+- **Gestión de Inventario (Distribuidora):** Registro, consulta, filtrado y reporte de productos.
+- **Gestión de Adopciones (Fundación):** Registro de mascotas, filtrado de animales disponibles y procesamiento de adopciones.
+- **Gestión de Usuarios:** Estructuración de clientes y personal mediante herencia.
+- **Menú Interactivo:** Navegación por consola con validación de datos.
 
 ---
 
 ## 🛠️ Tecnologías
 
-- Java
+- Java (JDK 17+)
 - IntelliJ IDEA
-- Git
-- GitHub
--  Markdown
+- Git & GitHub
+- Markdown
 - StarUML
 
 ---
 
 ## 📚 Conceptos aplicados
 
-### ✅ v1.0
+### ✅ v1.0 (Fundamentos)
+- Programación estructurada, condicionales y ciclos.
+- Manejo de arreglos y métodos.
+- Lectura y validación de datos con `Scanner`.
 
-- Variables
-- Constantes
-- Métodos
-- Scanner
-- Condicionales
-- Ciclos
-- Arreglos
-- Validación de datos
-
-### 🔨 v2.0 (En progreso)
-
-- Programación Orientada a Objetos
-- Encapsulamiento
-- Herencia
-- Polimorfismo
-- Sobrescritura
-- Sobrecarga
-- Clases abstractas
-- Interfaces
----
-
-## 🚀 Roadmap
-
-- ✅ v1.0 - Sistema de inventario
-- 🔨 v2.0 - Programación Orientada a Objetos
-- ⬜ v3.0 - Colecciones (ArrayList)
-- ⬜ v4.0 - Persistencia de datos
-- ⬜ v5.0 - Base de datos SQL
-- ⬜ v6.0 - Spring Boot
-- ⬜ v7.0 - API REST
-- ⬜ v8.0 - Aplicación web
+### 🔨 v2.0 (POO & Colecciones)
+- **Paradigmas POO:** Encapsulamiento, Herencia, Polimorfismo, Clases Abstractas e Interfaces.
+- **Estructuras de Datos:** Manejo de Colecciones dinámicas (`ArrayList`, `List`).
+- **Arquitectura:** Separación de paquetes (`model`, `service`/`controller`).
 
 ---
+
+## 🚀 Roadmap de Evolución
+
+- ✅ **v1.0** - Fundamentos y Programación Estructurada.
+- 🔨 **v2.0** - Programación Orientada a Objetos & Colecciones en Memoria (Consola).
+- ⬜ **v3.0** - Migración Backend con **Spring Boot** (API REST & Arquitectura en Capas).
+- ⬜ **v4.0** - Persistencia de Datos con **Spring Data JPA & PostgreSQL / MySQL**.
+- ⬜ **v5.0** - Frontend Web (Conexión Fullstack).
+
+---
+
 ## 📂 Documentación
 
-Toda la documentación del proyecto se encuentra en la carpeta `docs`.
+Toda la documentación del proyecto se encuentra en la carpeta `docs`:
+- Requerimientos del sistema.
+- Diagrama de clases (UML).
 
-- Requerimientos v1.0
-- Requerimientos v2.0
-- Diagrama de clases (UML)
+---
 
 ## 🎯 Objetivo
 
-Este proyecto tiene un propósito educativo. Cada nueva versión incorporará los conocimientos adquiridos durante mi proceso de formación como desarrolladora backend.
+Este proyecto tiene un propósito estrictamente educativo. Cada nueva versión refleja y valida las competencias adquiridas en mi ruta de aprendizaje como desarrolladora backend.
 
 ---
-
 Desarrollado con ❤️ mientras aprendo Java.
