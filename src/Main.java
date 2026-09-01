@@ -1,9 +1,11 @@
 import model.*;
+import service.FundacionAuroraService;
+import service.InventarioService;
 
 public class Main {
     public static void main(String[] args) {
 
-        Inventario inventario = new Inventario();
+        InventarioService inventario = new InventarioService();
         Alimento a1 = new Alimento(1, "BR For Cat", 23000, 3);
         Alimento a2 = new Alimento(1, "Cat chow", 23000, 3);
         Alimento a3 = new Alimento(1, "Alpiste", 23000, 3);
@@ -31,10 +33,13 @@ public class Main {
 
         Mascota m1 = new Mascota(112, "Laika", "gato", 3);
 
-        FundacionAurora f = new FundacionAurora();
+        FundacionAuroraService f = new FundacionAuroraService();
         f.agregarMascota(m1);
         f.adoptarMascota(112);
 
         f.mostrarMascotas();
+
+
+        c1.listadoMascotasAdoptadas();
     }
 }

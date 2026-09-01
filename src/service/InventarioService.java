@@ -1,12 +1,14 @@
-package model;
+package service;
+
+import model.Producto;
 
 import java.util.ArrayList;
 
-public class Inventario {
+public class InventarioService {
 
     private ArrayList<Producto> productos;
 
-    public Inventario(){
+    public InventarioService(){
         this.productos = new ArrayList<>();
     }
 

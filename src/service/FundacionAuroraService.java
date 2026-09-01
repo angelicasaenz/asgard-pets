@@ -1,13 +1,15 @@
-package model;
+package service;
+
+import model.Mascota;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FundacionAurora {
+public class FundacionAuroraService {
 
     private List<Mascota> mascotas = new ArrayList<>();
 
-    public FundacionAurora(){
+    public FundacionAuroraService(){
         this.mascotas = new ArrayList<>();
     }
 
