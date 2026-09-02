@@ -63,6 +63,7 @@ public abstract class Producto {
     public double calcularValorTotal(){
         return precio * cantidad;
     }
+
     @Override
     public String toString(){
         return "ID: " + id +

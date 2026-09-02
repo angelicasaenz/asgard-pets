@@ -2,6 +2,7 @@ package view;
 
 import model.Accesorio;
 import model.Alimento;
+import model.Mascota;
 import model.Medicamento;
 import service.FundacionAuroraService;
 import service.InventarioService;
@@ -69,52 +70,134 @@ public class Menu {
 
             int opcion = Validador.leerEntero(sc, "Por favor seleccione una opción: ");
 
-            switch (opcion){
+            switch (opcion) {
                 case 1:
-                    System.out.println("""
-            \n¿Qué tipo de producto desea registrar?
-            1. Alimento                   
-            2. Medicamento                            
-            3. Accesorio
-            4. Cancelar / Salir
-            """);
-                    int tipo = Validador.leerEntero(sc, "Seleccione el tipo: ");
+                        System.out.println("""
+                                        \n¿Qué tipo de producto desea registrar?
+                                        1. Alimento                   
+                                        2. Medicamento                            
+                                        3. Accesorio
+                                        4. Cancelar / Salir
+                                        """);
+                        int tipo = Validador.leerEntero(sc, "Seleccione el tipo: ");
 
-                    if (tipo == 4) {
-                        System.out.println("Registro cancelado.");
+                        if (tipo == 4){
+                            System.out.println("\nSaliendo...");
+                            break;
+                        } else if (tipo < 1 || tipo > 3){
+                            System.out.println("Opción invalida.");
+                            break;
+                        } else {
+                            int id = Validador.leerEntero(sc, "ID: ");
+                            String nombre = Validador.leerTexto(sc, "Nombre: ");
+                            double precio = Validador.leerDouble(sc, "Precio: ");
+                            int cantidad = Validador.leerEntero(sc, "Cantidad: ");
+
+                            switch (tipo) {
+                                case 1:
+                                    inventarioService.registrarProducto(new Alimento(id, nombre, precio, cantidad));
+                                    System.out.println("¡Alimento registrado exitosamente!");
+                                    break;
+                                case 2:
+                                    inventarioService.registrarProducto(new Medicamento(id, nombre, precio, cantidad));
+                                    System.out.println("¡Medicamento registrado exitosamente!");
+                                    break;
+                                case 3:
+                                    inventarioService.registrarProducto(new Accesorio(id, nombre, precio, cantidad));
+                                    System.out.println("¡Accesorio registrado exitosamente!");
+                                    break;
+                                case 4:
+                                    System.out.println("Registro cancelado.");
+                                    break;
+                                default:
+                                    System.out.println("Opción de producto no válida.");
+                            }
+                            break;
+                        }
+                case 2:
+                    int idABuscar = Validador.leerEntero(sc, "Ingrese el ID: ");
+                    inventarioService.buscarProducto(idABuscar);
+                    break;
+                case 3:
+                    inventarioService.mostrarInventario();
+                    break;
+                case 4:
+                    int idAcualizar = Validador.leerEntero(sc, "\nIngrese el ID del producto a acutalizar: ");
+                    if(inventarioService.buscarProducto(idAcualizar)){
+                        String nombreNuevo = Validador.leerTexto(sc, "\nNombre a modificar: ");
+                        double precioNuevo = Validador.leerDouble(sc, "\nPrecio a modificar: ");
+                        int cantidadNueva = Validador.leerEntero(sc, "\nCantidad a modificar: ");
+                        inventarioService.actualizarProducto(idAcualizar, nombreNuevo, precioNuevo, cantidadNueva);
+                        System.out.println("\n Producto actualizado con exito!");
+                        break;
+                    } else {
+                        System.out.println("No existe producto con ese ID");
                         break;
                     }
 
-                    int id = Validador.leerEntero(sc, "ID: ");
-                    String nombre = Validador.leerTexto(sc, "Nombre: ");
-                    double precio = Validador.leerDouble(sc, "Precio: ");
-                    int cantidad = Validador.leerEntero(sc, "Cantidad: ");
 
-                    switch (tipo) {
-                        case 1:
-                            inventarioService.registrarProducto(new Alimento(id, nombre, precio, cantidad));
-                            System.out.println("¡Alimento registrado exitosamente!");
-                            break;
-                        case 2:
-                            inventarioService.registrarProducto(new Medicamento(id, nombre, precio, cantidad));
-                            System.out.println("¡Medicamento registrado exitosamente!");
-                            break;
-                        case 3:
-                            inventarioService.registrarProducto(new Accesorio(id, nombre, precio, cantidad));
-                            System.out.println("¡Accesorio registrado exitosamente!");
-                            break;
-                        default:
-                            System.out.println("Opción de producto no válida.");
-                    }
+                case 5:
+                    int idEliminar = Validador.leerEntero(sc, "Ingrese el ID del producto que desea eliminar: ");
+                    inventarioService.eliminarProducto(idEliminar);
                     break;
+                case 6:
+                    System.out.println("Saliendo...");
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción no valida");
                     }
-
         }
     }
 
-    // ================= SUBMENÚ INVENTARIO =================
+    // ================= SUBMENÚ AURORA =================
 
     private void menuAurora(){
 
+        boolean salir = false;
+        while (!salir){
+            System.out.println("\n--- GESTIÓN FUNDACIÓN AURORA ---");
+            System.out.println("""
+                    1. Mostrar información de la Fundación Aurora
+                    2. Registrar mascota rescatada
+                    3. Registrar adopción
+                    4. Registrar donación
+                    5. Mostrar mascotas disponibles para adopción
+                    6. Volver al menú principal
+                    """);
+            int opcion = Validador.leerEntero(sc, "Por favor ingrese una opción: ");
+
+            switch (opcion){
+                case 1:
+                    System.out.println("""
+                            
+                            ===================================================================
+                                                   FUNDACIÓN AURORA 💜🐾
+                                        "Cuidado, Amor y Bienestar para Mascotas"
+                            ===================================================================
+                             La Fundación Aurora es una iniciativa sin ánimo de lucro creada\s
+                             por Asgard Pets. Nuestro propósito es rescatar, rehabilitar y\s
+                             dar en adopción responsable a mascotas en situación de vulnerabilidad.
+                            
+                             Asgard Pets destina un porcentaje de sus ganancias para financiar\s
+                             el sostenimiento, alimentación y atención médica de nuestros rescatados.
+                            
+                             ¡Gracias por formar parte de nuestra labor social y ayudar a proteger
+                             a quienes no tienen voz!
+                            ===================================================================
+                           
+                            """);
+                    break;
+                case 2:
+                    int id = Validador.leerEntero(sc, "ID: ");
+                    String nombre = Validador.leerTexto(sc, "Nombre: ");
+                    String especie = Validador.leerTexto(sc, "Especie: ");
+                    int edad = Validador.leerEntero(sc, "Edad: ");
+
+                    fundacionAuroraService.agregarMascota(new Mascota(id, nombre, especie, edad));
+                    System.out.println(nombre +  " se ha unido a nuestra familia Aurora!! 🐾 ");
+                    break;
+            }
+        }
     }
 }

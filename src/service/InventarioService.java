@@ -16,16 +16,18 @@ public class InventarioService {
         productos.add(producto);
     }
 
-    public void buscarProducto(int id){
+    public boolean buscarProducto(int id){
         boolean productoEncontrado = false;
         for(int i = 0; i < productos.size(); i++){
             if(id == productos.get(i).getId()){
+                System.out.println("\nProducto encontrado: ");
                 System.out.println(productos.get(i));
                 productoEncontrado = true;
             }
         } if (!productoEncontrado){
-            System.out.println("Producto no encontrado");
+            System.out.println("\nProducto no encontrado");
         }
+        return productoEncontrado;
     }
 
     public void  actualizarProducto(int id, String nombreNuevo, double precioNuevo, int cantidadNueva){
