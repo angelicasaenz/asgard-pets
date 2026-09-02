@@ -1,74 +1,87 @@
-# 🐾 Asgard Pets & Fundación Aurora
+# 🐾 Asgard Pets y Fundación Aurora - Módulo Consola POO
 
-Asgard Pets es un proyecto personal desarrollado como parte de mi proceso de aprendizaje en Java y desarrollo backend.
+Asgard Pets y Fundación Aurora es una aplicación backend en consola desarrollada en Java puro. El proyecto simula la gestión operativa de una empresa distribuidora de productos para mascotas y la administración de su fundación social dedicada al rescate, cuidado y adopción responsable de animales.
 
-El proyecto simula el sistema de una empresa dedicada a la distribución de alimentos, medicamentos y accesorios para mascotas. Además, la empresa apoya a la **Fundación Aurora**, una organización enfocada en el rescate, rehabilitación y adopción responsable de animales.
-
-El objetivo de este proyecto es evolucionar gradualmente mientras aplico nuevas tecnologías, pasando de un sistema monolítico de consola en Java puro hasta un ecosistema backend completo con Spring Boot.
+El objetivo principal de esta versión es demostrar el dominio práctico de la Programación Orientada a Objetos, el diseño de arquitecturas en capas para consola y el uso eficiente de colecciones en memoria RAM.
 
 ---
 
-## 📖 Estado del proyecto
+## 📖 Estado del Proyecto
 
-### ✅ v1.0 - Sistema de Inventario Básico (Finalizada)
-Sistema de inventario básico desarrollado en Java utilizando programación estructurada y arreglos.
+**v2.0 - Core POO y Manejo en Memoria (En Desarrollo)**
 
-### 🔨 v2.0 - Core POO & Manejo de Memoria (En desarrollo)
-Reestructuración completa del sistema aplicando **Programación Orientada a Objetos** y **Colecciones (`ArrayList`)** para simular la gestión en memoria RAM mediante un menú interactivo por consola.
-
-#### Funcionalidades clave:
-- **Gestión de Inventario (Distribuidora):** Registro, consulta, filtrado y reporte de productos.
-- **Gestión de Adopciones (Fundación):** Registro de mascotas, filtrado de animales disponibles y procesamiento de adopciones.
-- **Gestión de Usuarios:** Estructuración de clientes y personal mediante herencia.
-- **Menú Interactivo:** Navegación por consola con validación de datos.
+Reestructuración integral del sistema aplicando los pilares de la Programación Orientada a Objetos y colecciones dinámicas (`ArrayList`) para gestionar la información en memoria RAM a través de menús interactivos en consola.
 
 ---
 
-## 🛠️ Tecnologías
+## 🛠️ Funcionalidades Clave y Estructura del Menú
 
-- Java (JDK 17+)
-- IntelliJ IDEA
-- Git & GitHub
-- Markdown
-- StarUML
+* **Módulo Asgard Pets (Gestión Comercial e Inventario):**
+    * **Gestión de Inventario:**
+        * Registro parametrizado de productos por categoría (Alimentos, Medicamentos y Accesorios).
+        * Búsqueda individual de productos por ID con validación defensiva.
+        * Muestreo completo del inventario disponible.
+        * Actualización en tiempo real de datos (precio, cantidad, nombre).
+        * Eliminación física de registros del inventario.
+    * **Gestión de Ventas:**
+        * Registro de ventas asociando cliente, producto y cantidad.
+        * Cálculo automático de totales e impacto en el stock del inventario.
 
----
+* **Módulo Fundación Aurora (Gestión Social y Adopciones):**
+    * **Información Institucional:** Muestra de la misión, visión y relación entre Asgard Pets y la Fundación.
+    * **Gestión de Mascotas Rescatadas:**
+        * Registro de animales rescatados (ID, Nombre, Especie, Edad, Estado de Salud).
+        * Listado general y filtrado de mascotas disponibles para adopción.
+    * **Procesamiento de Adopciones:**
+        * Vinculación entre un adoptante registrado y una mascota disponible.
+        * Cambio automático del estado de la mascota a "Adoptado".
+    * **Gestión de Donaciones:**
+        * Registro de donaciones monetarias o en especie.
+        * Reporte de fondos recaudados para el sostenimiento de los rescatados.
 
-## 📚 Conceptos aplicados
+* **Módulo de Personas (Herencia y Polimorfismo):**
+    * **Gestión de Clientes y Adoptantes:** Registro, consulta y asociación a ventas o adopciones.
+    * **Gestión de Personal y Voluntarios:** Registro de empleados de Asgard Pets y colaboradores de la Fundación.
 
-### ✅ v1.0 (Fundamentos)
-- Programación estructurada, condicionales y ciclos.
-- Manejo de arreglos y métodos.
-- Lectura y validación de datos con `Scanner`.
-
-### 🔨 v2.0 (POO & Colecciones)
-- **Paradigmas POO:** Encapsulamiento, Herencia, Polimorfismo, Clases Abstractas e Interfaces.
-- **Estructuras de Datos:** Manejo de Colecciones dinámicas (`ArrayList`, `List`).
-- **Arquitectura:** Separación de paquetes (`model`, `service`/`controller`).
-
----
-
-## 🚀 Roadmap de Evolución
-
-- ✅ **v1.0** - Fundamentos y Programación Estructurada.
-- 🔨 **v2.0** - Programación Orientada a Objetos & Colecciones en Memoria (Consola).
-- ⬜ **v3.0** - Migración Backend con **Spring Boot** (API REST & Arquitectura en Capas).
-- ⬜ **v4.0** - Persistencia de Datos con **Spring Data JPA & PostgreSQL / MySQL**.
-- ⬜ **v5.0** - Frontend Web (Conexión Fullstack).
-
----
-
-## 📂 Documentación
-
-Toda la documentación del proyecto se encuentra en la carpeta `docs`:
-- Requerimientos del sistema.
-- Diagrama de clases (UML).
+* **Control de Entrada y Validaciones:**
+    * Componente centralizado `Validador` para interceptar errores de tipo de dato en la consola (`Scanner`).
+    * Flujos de navegación protegidos con cláusulas de guarda (*guard clauses*) para evitar excepciones en tiempo de ejecución.
 
 ---
 
-## 🎯 Objetivo
+## 🛠️ Tecnologías Utilizadas
 
-Este proyecto tiene un propósito estrictamente educativo. Cada nueva versión refleja y valida las competencias adquiridas en mi ruta de aprendizaje como desarrolladora backend.
+* **Java (JDK 17+)**
+* **IntelliJ IDEA**
+* **Git y GitHub**
+* **Markdown**
+* **StarUML**
 
 ---
-Desarrollado con ❤️ mientras aprendo Java.
+
+## 📚 Conceptos de POO y Arquitectura Aplicados
+
+* **Paradigmas POO:** Encapsulamiento, Herencia, Polimorfismo y Clases Abstractas.
+* **Estructuras de Datos:** Manejo de colecciones dinámicas (`ArrayList` e interfaces `List`).
+* **Arquitectura Limpia en Capas (MVC simplificado):**
+    * `model`: Clases y POJOs con su jerarquía e información del dominio.
+    * `service`: Lógica de negocio pura y manipulación de las listas en memoria.
+    * `util`: Lógica transversal de validación de entradas por Scanner.
+    * `view`: Gestión de menús, flujos interactivos y muestra de respuestas al usuario.
+
+---
+
+## 📂 Documentación del Proyecto
+
+Toda la documentación técnica de esta etapa se encuentra dentro de la carpeta `docs`:
+* Requerimientos funcionales del sistema.
+* Diagrama de clases UML completo.
+
+---
+
+## 🎯 Próximos Pasos
+
+La lógica de negocio y las estructuras diseñadas en esta versión en consola servirán como base conceptual para la posterior migración hacia una arquitectura web distribuida utilizando **Spring Boot**, **Spring Data JPA** y bases de datos relacionales.
+
+---
+*Desarrollado como parte del proceso de aprendizaje y especialización en desarrollo backend con Java.*
