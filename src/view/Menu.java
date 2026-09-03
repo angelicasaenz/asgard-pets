@@ -161,13 +161,12 @@ public class Menu {
                     1. Mostrar información de la Fundación Aurora
                     2. Registrar mascota rescatada
                     3. Registrar adopción
-                    4. Registrar donación
-                    5. Mostrar mascotas disponibles para adopción
-                    6. Volver al menú principal
+                    4. Mostrar mascotas disponibles para adopción
+                    5. Volver al menú principal
                     """);
             int opcion = Validador.leerEntero(sc, "Por favor ingrese una opción: ");
 
-            switch (opcion){
+            switch (opcion) {
                 case 1:
                     System.out.println("""
                             
@@ -185,7 +184,7 @@ public class Menu {
                              ¡Gracias por formar parte de nuestra labor social y ayudar a proteger
                              a quienes no tienen voz!
                             ===================================================================
-                           
+                            
                             """);
                     break;
                 case 2:
@@ -195,9 +194,29 @@ public class Menu {
                     int edad = Validador.leerEntero(sc, "Edad: ");
 
                     fundacionAuroraService.agregarMascota(new Mascota(id, nombre, especie, edad));
-                    System.out.println(nombre +  " se ha unido a nuestra familia Aurora!! 🐾 ");
+                    System.out.println("\n" + nombre + " se ha unido a nuestra familia Aurora!! 🐾 ");
+                    break;
+
+                case 3:
+                    int idAdoptar = Validador.leerEntero(sc, "I\nngrese el ID de la mascota que será adoptada: ");
+                    fundacionAuroraService.adoptarMascota(idAdoptar);
+                    break;
+                case 4:
+                    fundacionAuroraService.mostrarMascotas();
+                    break;
+                case 5:
+                    System.out.println("\nSaliendo...");
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción no valida. Intente de nuevo");
                     break;
             }
         }
     }
 }
+
+
+//                     4. Mostrar mascotas disponibles para adopción
+//                    5. Consultar historial de adopciones
+//                    6. Volver al menú principal

@@ -17,11 +17,13 @@ public class FundacionAuroraService {
         mascotas.add(mascota);
     }
 
+
     public void adoptarMascota(int id){
         for (Mascota m : mascotas ){
             if (id == m.getId()){
                 m.adoptar();
                 System.out.println("¡Felicidades! " + m.getNombre() + " ahora tiene una familia. :) ");
+                mascotas.remove(m);
                 return;
             }
         }
