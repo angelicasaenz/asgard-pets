@@ -6,6 +6,7 @@ import model.Mascota;
 import model.Medicamento;
 import service.FundacionAuroraService;
 import service.InventarioService;
+import service.VentaService;
 import util.Validador;
 
 import java.util.Scanner;
@@ -14,12 +15,14 @@ public class Menu {
 
     private InventarioService inventarioService;
     private FundacionAuroraService fundacionAuroraService;
+    private VentaService ventaService;
 
     private Scanner sc;
 
     public Menu(){
         this.fundacionAuroraService = new FundacionAuroraService();
         this.inventarioService = new InventarioService();
+        this.ventaService = new VentaService();
         this.sc = new Scanner(System.in);
     }
 
@@ -29,10 +32,16 @@ public class Menu {
         boolean salir = false;
 
         while (!salir){
-            System.out.println("\n========== SISTERMA PRINCIPAL ASGARD PETS Y AURORA ==========");
-            System.out.println("1. Módulo Asgard Pets (Inventario)");
-            System.out.println("2. Módulo Fundación Aurora (Adopciones)");
-            System.out.println("3. Salir");
+            System.out.println("\n========== SISTEMA PRINCIPAL ASGARD PETS Y AURORA ==========");
+            System.out.println("""
+                    
+                    1. Módulo Asgard Pets (Inventario)
+                    2. Módulo Fundación Aurora (Adopciones)
+                    3. Módulo de Ventas (Registrar ventas)
+                    4. Módulo de Personas (Clientes, Empleados, Proveedores)
+                    5. Salir
+                    
+                    """);
 
             int opcion = Validador.leerEntero(sc, "Seleccione una opción: ");
 
@@ -44,6 +53,12 @@ public class Menu {
                     menuAurora();
                     break;
                 case 3:
+                    menuVentas();
+                    break;
+                case 4:
+                    menuPersonas();
+                    break;
+                case 5:
                     System.out.println("Gracias por usar el sistema! Hasta pronto.");
                     salir = true;
                     break;
@@ -105,9 +120,6 @@ public class Menu {
                                 case 3:
                                     inventarioService.registrarProducto(new Accesorio(id, nombre, precio, cantidad));
                                     System.out.println("¡Accesorio registrado exitosamente!");
-                                    break;
-                                case 4:
-                                    System.out.println("Registro cancelado.");
                                     break;
                                 default:
                                     System.out.println("Opción de producto no válida.");
@@ -198,7 +210,7 @@ public class Menu {
                     break;
 
                 case 3:
-                    int idAdoptar = Validador.leerEntero(sc, "I\nngrese el ID de la mascota que será adoptada: ");
+                    int idAdoptar = Validador.leerEntero(sc, "\n Ingrese el ID de la mascota que será adoptada: ");
                     fundacionAuroraService.adoptarMascota(idAdoptar);
                     break;
                 case 4:
@@ -214,6 +226,37 @@ public class Menu {
             }
         }
     }
+
+    // ================= SUBMENÚ VENTAS =================
+
+    private void menuVentas(){
+
+    }
+
+    // ================= SUBMENÚ PERSONAS =================
+
+    private void menuPersonas(){
+
+            boolean salir = false;
+            while (!salir){
+                System.out.println("\n--- GESTIÓN VENTAS ---");
+                System.out.println("""
+                        
+                        1. Registrar venta
+                        2. Mostrar historial de ventas
+                        3. Volver al menú principal
+                        
+                        """);
+                int opcion = Validador.leerEntero(sc, "Por favor ingrese una opción: ");
+
+                switch (opcion){
+                    case 1:
+                        ventaService.registrarVenta();
+
+                }
+            }
+
+        }
 }
 
 

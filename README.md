@@ -12,34 +12,33 @@ El objetivo principal de esta versión es demostrar el dominio práctico de la P
 Reestructuración integral del sistema aplicando los pilares de la Programación Orientada a Objetos y colecciones dinámicas (`ArrayList`) para gestionar la información en memoria RAM a través de menús interactivos en consola.
 
 ---
+### 🛠️ Funcionalidades Clave y Estructura del Menú
 
-## 🛠️ Funcionalidades Clave y Estructura del Menú
-
-### 🛍️ Módulo Asgard Pets (Gestión Comercial e Inventario)
+#### 🛍️ Módulo Asgard Pets (Gestión Comercial e Inventario)
 * **Gestión de Inventario:**
     * Registro parametrizado de productos por categoría (Alimentos, Medicamentos y Accesorios).
     * Búsqueda individual de productos por ID con validación defensiva.
     * Muestreo completo del inventario disponible.
     * Actualización en tiempo real de datos (precio, cantidad, nombre).
     * Eliminación física de registros del inventario.
-* **Gestión de Ventas:**
-    * Registro de ventas asociando cliente, producto y cantidad.
-    * Cálculo automático de totales e impacto en el stock del inventario.
 
-### 🐾 Módulo Fundación Aurora (Gestión Social)
+#### 🐾 Módulo Fundación Aurora (Gestión Social y Adopciones)
 * **Información Institucional:** Muestra de la misión, visión y relación estratégica entre Asgard Pets y la Fundación.
 * **Gestión de Mascotas Rescatadas:**
-    * Registro de animales rescatados (ID, Nombre, Especie, Edad, Estado de Salud).
-    * Listado completo y filtrado de mascotas registradas que están disponibles para adopción.
+    * Registro de animales rescatados (ID, Nombre, Especie, Edad).
+    * Listado completo de mascotas disponibles para adopción.
+    * Procesamiento de adopciones mediante la actualización de estado por ID de la mascota.
 
-### 👤 Módulo de Personas (Herencia y Polimorfismo)
-* **Gestión de Clientes y Adoptantes:** Registro y consulta de datos personales mediante la jerarquía de clases base.
-* **Gestión de Personal y Voluntarios:** Registro modular de empleados de Asgard Pets y colaboradores de la Fundación.
+#### 💳 Módulo de Ventas
+* Registro de ventas asociando datos de transacción, producto y cantidad.
+* Cálculo automático del costo total e impacto directo en el stock disponible del inventario.
 
-### 🛡️ Control de Entrada y Validaciones
+#### 👤 Módulo de Personas (Herencia y Polimorfismo)
+* **Gestión de Usuarios y Roles:** Registro y consulta modular de Clientes, Empleados, Administradores y Proveedores utilizando la clase base abstracta `Usuario`.
+
+#### 🛡️ Control de Entrada y Validaciones
 * Componente centralizado `Validador` para interceptar errores de tipo de dato en la consola (`Scanner`).
 * Flujos de navegación protegidos con cláusulas de guarda (*guard clauses*) para evitar excepciones en tiempo de ejecución.
-
 ---
 
 ## 🛠️ Tecnologías Utilizadas
