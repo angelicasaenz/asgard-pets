@@ -64,5 +64,14 @@ public class InventarioService {
         }
     }
 
+    public Producto obtenerProductoPorId(int id) {
+        for (Producto p : productos) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
+    }
+
 }
 

@@ -8,12 +8,13 @@ public class Cliente extends Usuario{
     private List<Mascota> mascotasAdoptadas = new ArrayList<>();
 
 
-    public Cliente(String cedula, String nombre, String correo){
+    public Cliente(String cedula, String nombre){
 
-        super(cedula, nombre, correo);
+        super(cedula, nombre, "Sin Correo");
         this.mascotasAdoptadas = new ArrayList<>();
 
     }
+
 
     @Override
     public String panelInicio(){

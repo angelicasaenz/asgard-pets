@@ -1,9 +1,6 @@
 package view;
 
-import model.Accesorio;
-import model.Alimento;
-import model.Mascota;
-import model.Medicamento;
+import model.*;
 import service.FundacionAuroraService;
 import service.InventarioService;
 import service.VentaService;
@@ -251,7 +248,40 @@ public class Menu {
 
                 switch (opcion){
                     case 1:
-                        ventaService.registrarVenta();
+                        // Crear cliente
+                        String cedulaCliente = Validador.leerTexto(sc, "Cédula cliente: ");
+                        String nombreCliente = Validador.leerTexto(sc, "Nombre cliente;");
+                        Cliente cliente = new Cliente(cedulaCliente, nombreCliente);
+
+                        // Crear venta
+                        int idVenta = 0;
+                        Venta venta = new Venta(idVenta++, cliente);
+
+                        // Agregar productos
+
+                        boolean finalizar = false;
+                        while (!finalizar){
+                            int idProductoComprar =  Validador.leerEntero(sc, "ID del producto: ");
+
+                            // Obtener producto
+                            Producto productoEncontrado = inventarioService.obtenerProductoPorId(idProductoComprar);
+
+                            if (productoEncontrado != null){
+                                venta.agregarProducto(productoEncontrado);
+                            } else {
+                                System.out.println("No se encontró ningún producto con ese ID.");
+                            }
+
+                            System.out.println("\n1. Agregar otro producto");
+                            System.out.println("2. Finalizar compra");
+                            int op = Validador.leerEntero(sc, "Seleccione una opción: ");
+
+                            if (op == 2) {
+                                finalizar = true;
+                            }
+                        }
+
+
 
                 }
             }
