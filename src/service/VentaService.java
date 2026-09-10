@@ -24,7 +24,7 @@ public class VentaService {
             return;
         }
 
-        System.out.println("\n=== HISTORIAL DE VENTAS REGISTRADAS ===");
+        System.out.println("\n**** HISTORIAL DE VENTAS REGISTRADAS ****");
         for (Venta v : listaVentas) {
             v.mostrarFactura();
         }

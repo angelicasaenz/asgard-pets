@@ -228,6 +228,7 @@ public class Menu {
 
     private void menuVentas() {
         boolean salir = false;
+        int contadorIdVenta = 1;
         while (!salir) {
             System.out.println("\n--- GESTIÓN VENTAS ---");
             System.out.println("""
@@ -247,8 +248,7 @@ public class Menu {
                     Cliente cliente = new Cliente(cedulaCliente, nombreCliente);
 
                     // Crear venta
-                    int idVenta = 0;
-                    Venta venta = new Venta(idVenta++, cliente);
+                    Venta venta = new Venta(contadorIdVenta++, cliente);
 
                     // Agregar productos
 
@@ -281,11 +281,15 @@ public class Menu {
                     venta.mostrarFactura();
                     break;
                 case 2:
-
-                    System.out.println("**** HISTORIAL DE VENTAS ****");
-
-
-
+                    ventaService.mostrarHistorialVentas();
+                    break;
+                case 3:
+                    System.out.println("Saliendo...");
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Por favor seleccione una opción correcta.");
+                    break;
             }
         }
     }
