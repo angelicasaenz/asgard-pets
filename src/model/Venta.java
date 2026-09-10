@@ -18,9 +18,11 @@ public class Venta {
     }
 
 
-    public void agregarProducto(Producto producto){
-        productos.add(producto);
-        sumaTotalAPagar += producto.getPrecio();
+    public void agregarProducto(Producto producto, int cantidad){
+        for(int i = 0; i < cantidad; i++){
+            productos.add(producto);
+        }
+        sumaTotalAPagar += producto.getPrecio() * cantidad;
     }
 
     public void mostrarFactura(){
@@ -33,4 +35,6 @@ public class Venta {
         }
         System.out.println("\nTotal: " + sumaTotalAPagar);
     }
+
+
 }

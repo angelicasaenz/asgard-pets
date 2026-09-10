@@ -226,69 +226,76 @@ public class Menu {
 
     // ================= SUBMENÚ VENTAS =================
 
-    private void menuVentas(){
+    private void menuVentas() {
+        boolean salir = false;
+        while (!salir) {
+            System.out.println("\n--- GESTIÓN VENTAS ---");
+            System.out.println("""
+                    
+                    1. Registrar venta
+                    2. Mostrar historial de ventas
+                    3. Volver al menú principal                 
+                    """);
+            int opcion = Validador.leerEntero(sc, "Por favor ingrese una opción: ");
 
+            switch (opcion) {
+                case 1:
+                    // Crear cliente
+                    System.out.println("\nDatos del cliente: ");
+                    String cedulaCliente = Validador.leerTexto(sc, "Cédula cliente: ");
+                    String nombreCliente = Validador.leerTexto(sc, "Nombre cliente: ");
+                    Cliente cliente = new Cliente(cedulaCliente, nombreCliente);
+
+                    // Crear venta
+                    int idVenta = 0;
+                    Venta venta = new Venta(idVenta++, cliente);
+
+                    // Agregar productos
+
+                    boolean finalizar = false;
+                    while (!finalizar) {
+                        System.out.println("\nDatos del producto: ");
+                        int idProductoComprar = Validador.leerEntero(sc, "ID del producto: ");
+
+                        // Obtener producto
+                        Producto productoEncontrado = inventarioService.obtenerProductoPorId(idProductoComprar);
+
+                        if (productoEncontrado != null) {
+                            int cantidadComprar = Validador.leerEntero(sc,"Cantidad: ");
+                            if( inventarioService.reducirStock(idProductoComprar,cantidadComprar)){
+                                venta.agregarProducto(productoEncontrado, cantidadComprar);
+                            }
+                        } else {
+                            System.out.println("No se encontró ningún producto con ese ID.");
+                        }
+
+                        System.out.println("\n1. Agregar otro producto");
+                        System.out.println("2. Finalizar compra");
+                        int op = Validador.leerEntero(sc, "Seleccione una opción: ");
+
+                        if (op == 2) {
+                            finalizar = true;
+                        }
+                    }
+                    ventaService.registrarVenta(venta);
+                    venta.mostrarFactura();
+                    break;
+                case 2:
+
+                    System.out.println("**** HISTORIAL DE VENTAS ****");
+
+
+
+            }
+        }
     }
 
     // ================= SUBMENÚ PERSONAS =================
 
     private void menuPersonas(){
+    }
 
-            boolean salir = false;
-            while (!salir){
-                System.out.println("\n--- GESTIÓN VENTAS ---");
-                System.out.println("""
-                        
-                        1. Registrar venta
-                        2. Mostrar historial de ventas
-                        3. Volver al menú principal
-                        
-                        """);
-                int opcion = Validador.leerEntero(sc, "Por favor ingrese una opción: ");
-
-                switch (opcion){
-                    case 1:
-                        // Crear cliente
-                        String cedulaCliente = Validador.leerTexto(sc, "Cédula cliente: ");
-                        String nombreCliente = Validador.leerTexto(sc, "Nombre cliente;");
-                        Cliente cliente = new Cliente(cedulaCliente, nombreCliente);
-
-                        // Crear venta
-                        int idVenta = 0;
-                        Venta venta = new Venta(idVenta++, cliente);
-
-                        // Agregar productos
-
-                        boolean finalizar = false;
-                        while (!finalizar){
-                            int idProductoComprar =  Validador.leerEntero(sc, "ID del producto: ");
-
-                            // Obtener producto
-                            Producto productoEncontrado = inventarioService.obtenerProductoPorId(idProductoComprar);
-
-                            if (productoEncontrado != null){
-                                venta.agregarProducto(productoEncontrado);
-                            } else {
-                                System.out.println("No se encontró ningún producto con ese ID.");
-                            }
-
-                            System.out.println("\n1. Agregar otro producto");
-                            System.out.println("2. Finalizar compra");
-                            int op = Validador.leerEntero(sc, "Seleccione una opción: ");
-
-                            if (op == 2) {
-                                finalizar = true;
-                            }
-                        }
-
-
-
-                }
-            }
-
-        }
 }
-
 
 //                     4. Mostrar mascotas disponibles para adopción
 //                    5. Consultar historial de adopciones

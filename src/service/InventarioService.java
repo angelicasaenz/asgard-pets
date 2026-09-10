@@ -73,5 +73,22 @@ public class InventarioService {
         return null;
     }
 
+    public boolean reducirStock(int id, int cantidad){
+
+        Producto p = obtenerProductoPorId(id);
+
+        if (p !=  null){
+            if (p.getCantidad() >= cantidad) {
+                p.setCantidad(p.getCantidad() - cantidad);
+                return true;
+            } else {
+                System.out.println("Stock insuficiente. Disponible: " + p.getCantidad());
+                return false;
+            }
+        }
+        return false;
+
+    }
+
 }
 
