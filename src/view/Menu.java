@@ -3,6 +3,7 @@ package view;
 import model.*;
 import service.FundacionAuroraService;
 import service.InventarioService;
+import service.UsuarioService;
 import service.VentaService;
 import util.Validador;
 
@@ -13,6 +14,7 @@ public class Menu {
     private InventarioService inventarioService;
     private FundacionAuroraService fundacionAuroraService;
     private VentaService ventaService;
+    private UsuarioService usuarioService;
 
     private Scanner sc;
 
@@ -20,6 +22,7 @@ public class Menu {
         this.fundacionAuroraService = new FundacionAuroraService();
         this.inventarioService = new InventarioService();
         this.ventaService = new VentaService();
+        this.usuarioService = new UsuarioService();
         this.sc = new Scanner(System.in);
     }
 
@@ -37,7 +40,6 @@ public class Menu {
                     3. Módulo de Ventas (Registrar ventas)
                     4. Módulo de Personas (Clientes, Empleados, Proveedores)
                     5. Salir
-                    
                     """);
 
             int opcion = Validador.leerEntero(sc, "Seleccione una opción: ");
@@ -297,10 +299,94 @@ public class Menu {
     // ================= SUBMENÚ PERSONAS =================
 
     private void menuPersonas(){
+
+        boolean salir = false;
+        while (!salir){
+            System.out.println("\n--- GESTIÓN PERSONAS ---");
+            System.out.println("""
+                1. Registrar un nuevo usuario.
+                2. Listar todos los usuarios.
+                3. Buscar usuario por cédula.
+                4. Volver al menú principal.
+                """);
+
+            int opcion = Validador.leerEntero(sc, "Por favor ingrese una opción: ");
+
+            switch (opcion){
+
+                case 1:
+                    System.out.println("""
+                                        \n¿Qué tipo de Usuario desea registrar?
+                                        1. Cliente                   
+                                        2. Empleado                            
+                                        3. Administrador
+                                        4. Proveedor
+                                        5. Cancelar / Salir
+                                        """);
+                    int tipoUsuario = Validador.leerEntero(sc, "Seleccione el tipo: ");
+
+                    if (tipoUsuario == 5 ){
+                        System.out.println("Saliendo...");
+                    } else if( tipoUsuario < 1 || tipoUsuario > 5){
+                        System.out.println("Opción no valida.");
+                    } else {
+                        String cedulaRegistrar = Validador.leerTexto(sc, "Cédula: ");
+                        String nombreRegistrar = Validador.leerTexto(sc, "Nombre: ");
+                        String correoRegistrar = Validador.leerTexto(sc, "Correo: ");
+
+                        switch (tipoUsuario){
+                            case 1:
+                                usuarioService.registrarUsuario(new Cliente(cedulaRegistrar, nombreRegistrar));
+                                System.out.println("Cliente registrado con éxito!");
+                                break;
+                            case 2:
+                                usuarioService.registrarUsuario(new Empleado(cedulaRegistrar, nombreRegistrar, correoRegistrar));
+                                System.out.println("Empleado registrado con éxito!");
+                                break;
+                            case 3:
+                                usuarioService.registrarUsuario(new Administrador(cedulaRegistrar, nombreRegistrar, correoRegistrar));
+                                System.out.println("Administrador registrado con éxito!");
+                                break;
+                            case 4:
+                                usuarioService.registrarUsuario(new Proveedor(cedulaRegistrar, nombreRegistrar, correoRegistrar));
+                                System.out.println("Proveedor registrado con éxito.");
+                                break;
+                            default:
+                                System.out.println("Opción inválida. Intente de nuevo");
+                                break;
+                        }
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("**** LISTADO DE USUARIOS ****");
+                    usuarioService.mostrarUsuarios();
+                    break;
+                case 3:
+                    String cedulaBuscar = Validador.leerTexto(sc, "Cédula: ");
+                    if (usuarioService.buscarCedula(cedulaBuscar) == null){
+                        System.out.println("Usuario no encontrado.");
+                    } else {
+                        System.out.println("\nUsuario encontrado: ");
+                        System.out.println(usuarioService.buscarCedula(cedulaBuscar));
+                    }
+                    break;
+                case 4:
+                    System.out.println("Saliendo...");
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción no valida. Intente de nuevo");
+                    break;
+            }
+        }
+
+
+
     }
+
+
+
 
 }
 
-//                     4. Mostrar mascotas disponibles para adopción
-//                    5. Consultar historial de adopciones
-//                    6. Volver al menú principal
