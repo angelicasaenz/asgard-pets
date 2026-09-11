@@ -331,32 +331,39 @@ public class Menu {
                         System.out.println("Opción no valida.");
                     } else {
                         String cedulaRegistrar = Validador.leerTexto(sc, "Cédula: ");
-                        String nombreRegistrar = Validador.leerTexto(sc, "Nombre: ");
-                        String correoRegistrar = Validador.leerTexto(sc, "Correo: ");
+                        Usuario confirmarCedula = usuarioService.buscarCedula(cedulaRegistrar);
+                        if (confirmarCedula != null){
+                            System.out.println("Esa cédula ya se encuentra registrada");
+                            break;
+                        } else {
+                            String nombreRegistrar = Validador.leerTexto(sc, "Nombre: ");
+                            String correoRegistrar = Validador.leerTexto(sc, "Correo: ");
 
-                        switch (tipoUsuario){
-                            case 1:
-                                usuarioService.registrarUsuario(new Cliente(cedulaRegistrar, nombreRegistrar));
-                                System.out.println("Cliente registrado con éxito!");
-                                break;
-                            case 2:
-                                usuarioService.registrarUsuario(new Empleado(cedulaRegistrar, nombreRegistrar, correoRegistrar));
-                                System.out.println("Empleado registrado con éxito!");
-                                break;
-                            case 3:
-                                usuarioService.registrarUsuario(new Administrador(cedulaRegistrar, nombreRegistrar, correoRegistrar));
-                                System.out.println("Administrador registrado con éxito!");
-                                break;
-                            case 4:
-                                usuarioService.registrarUsuario(new Proveedor(cedulaRegistrar, nombreRegistrar, correoRegistrar));
-                                System.out.println("Proveedor registrado con éxito.");
-                                break;
-                            default:
-                                System.out.println("Opción inválida. Intente de nuevo");
-                                break;
+                            switch (tipoUsuario){
+                                case 1:
+                                    usuarioService.registrarUsuario(new Cliente(cedulaRegistrar, nombreRegistrar));
+                                    System.out.println("Cliente registrado con éxito!");
+                                    break;
+                                case 2:
+                                    usuarioService.registrarUsuario(new Empleado(cedulaRegistrar, nombreRegistrar, correoRegistrar));
+                                    System.out.println("Empleado registrado con éxito!");
+                                    break;
+                                case 3:
+                                    usuarioService.registrarUsuario(new Administrador(cedulaRegistrar, nombreRegistrar, correoRegistrar));
+                                    System.out.println("Administrador registrado con éxito!");
+                                    break;
+                                case 4:
+                                    usuarioService.registrarUsuario(new Proveedor(cedulaRegistrar, nombreRegistrar, correoRegistrar));
+                                    System.out.println("Proveedor registrado con éxito.");
+                                    break;
+                                default:
+                                    System.out.println("Opción inválida. Intente de nuevo");
+                                    break;
+                            }
                         }
-                    }
-                    break;
+                        break;
+                        }
+
 
                 case 2:
                     System.out.println("**** LISTADO DE USUARIOS ****");
@@ -364,11 +371,12 @@ public class Menu {
                     break;
                 case 3:
                     String cedulaBuscar = Validador.leerTexto(sc, "Cédula: ");
-                    if (usuarioService.buscarCedula(cedulaBuscar) == null){
+                    Usuario usuarioEncontrado = usuarioService.buscarCedula(cedulaBuscar);
+                    if (usuarioEncontrado == null){
                         System.out.println("Usuario no encontrado.");
                     } else {
                         System.out.println("\nUsuario encontrado: ");
-                        System.out.println(usuarioService.buscarCedula(cedulaBuscar));
+                        System.out.println(usuarioEncontrado);
                     }
                     break;
                 case 4:
