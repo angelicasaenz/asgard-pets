@@ -43,6 +43,7 @@ El usuario será un empleado de Asgard Pets autorizado para manipular los difere
 
 RF - 01
 El sistema debe mostrar un menú general que permita al empleado acceder a los diferentes módulos del sistema.
+
 RF - 02
 El sistema permitirá gestionar el inventario, permitiendo registrar, buscar, actualizar, eliminar un ítem o mostrar todo el inventario.
 
