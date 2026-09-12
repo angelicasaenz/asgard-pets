@@ -1,8 +1,6 @@
-# 🐾 Asgard Pets y Fundación Aurora
+# 🐾 Asgard Pets - Sistema de Gestión Commercial
 
 **Asgard Pets** es un proyecto enfocado en el aprendizaje continuo y desarrollo backend en Java. El sistema simula la gestión de una empresa dedicada a la distribución de alimentos, medicamentos y accesorios para mascotas.
-
-Asimismo, se integra con la **Fundación Aurora**, una iniciativa orientada al rescate, rehabilitación y adopción responsable de animales.
 
 El objetivo de este repositorio es evolucionar de forma incremental, transitando desde un sistema monolítico de consola en Java puro hasta un ecosistema backend completo con Spring Boot y aplicaciones web Fullstack.
 
@@ -17,7 +15,6 @@ Proyecto desarrollado en equipo simulando un entorno de trabajo colaborativo rea
 * 💻 ([@mohaomais](https://github.com/mohaomais))
 * 💻 ([@pupoxdev](https://github.com/pupoxdev))
 
-
 ---
 
 ## 📖 Estado del Proyecto
@@ -28,8 +25,8 @@ Sistema de inventario básico desarrollado en Java utilizando programación estr
 ### ✅ v2.0 - Core POO y Manejo en Memoria (Finalizada)
 Reestructuración completa del sistema aplicando Programación Orientada a Objetos y Colecciones (`ArrayList`) para simular la gestión en memoria RAM mediante menús interactivos por consola.
 * **Gestión de Inventario (Distribuidora):** Registro, consulta, filtrado, actualización y eliminación de productos.
-* **Gestión de Adopciones (Fundación):** Registro de mascotas, filtrado de animales disponibles, registro de donaciones y solicitudes de adopción.
-* **Gestión de Usuarios:** Estructuración de clientes, adoptantes y personal mediante herencia y polimorfismo.
+* **Gestión de Ventas:** Registro de ventas, asociación de productos a clientes y generación de facturas.
+* **Gestión de Usuarios:** Estructuración de clientes, empleados, administradores y proveedores mediante herencia y polimorfismo.
 * **Menú Interactivo:** Navegación por consola con validación defensiva de datos centralizada.
 
 ---
@@ -37,6 +34,7 @@ Reestructuración completa del sistema aplicando Programación Orientada a Objet
 ## 🛠️ Tecnologías Utilizadas
 
 * **Lenguaje:** Java (JDK 17+)
+* **Base de Datos:** MySQL / MySQL Workbench
 * **Entorno de Desarrollo:** IntelliJ IDEA
 * **Control de Versiones:** Git y GitHub
 * **Modelado y Documentación:** Markdown, StarUML
@@ -61,9 +59,8 @@ Reestructuración completa del sistema aplicando Programación Orientada a Objet
 
 - [x] **v1.0** - Fundamentos y Programación Estructurada (Consola).
 - [x] **v2.0** - Programación Orientada a Objetos y Colecciones en Memoria (Consola).
-- [ ] **v3.0** - Desacoplamiento y Evolución Web:
-    * **Fundación Aurora Fullstack:** Migración del módulo social a una API REST con Spring Boot, PostgreSQL y Frontend Web *(Proyecto Académico en Equipo)*.
-    * **Asgard Pets API:** Evolución del módulo comercial a servicios web e-commerce con integración directa hacia la Fundación.
+- [ ] **v3.0** - Evolución a Web REST API:
+    * **Asgard Pets API:** Migración a una arquitectura REST API con Spring Boot, persistencia relacional en **MySQL Workbench** y Frontend Web.
 
 ---
 
