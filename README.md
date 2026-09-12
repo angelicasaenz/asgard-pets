@@ -1,4 +1,4 @@
-# 🐾 Asgard Pets - Sistema de Gestión Commercial
+# 🐾 Asgard Pets - Sistema de Gestión Comercial
 
 **Asgard Pets** es un proyecto enfocado en el aprendizaje continuo y desarrollo backend en Java. El sistema simula la gestión de una empresa dedicada a la distribución de alimentos, medicamentos y accesorios para mascotas.
 
