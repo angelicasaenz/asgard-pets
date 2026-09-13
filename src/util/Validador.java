@@ -43,7 +43,7 @@ public class Validador {
             if(!texto.trim().isEmpty()){
                 return texto;
             } else {
-                System.out.println("Eso no es un textro valido, por favor intenta de nuevo");
+                System.out.println("Eso no es un texto valido, por favor intenta de nuevo");
             }
         }
     }
