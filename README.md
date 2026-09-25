@@ -11,9 +11,7 @@ El objetivo de este repositorio es evolucionar de forma incremental, transitando
 Proyecto desarrollado en equipo simulando un entorno de trabajo colaborativo real, enfocado en el aprendizaje y aplicación de buenas prácticas backend:
 
 * 💻 **Angelica Saenz** ([@angelicasaenz](https://github.com/angelicasaenz))
-* 💻 ([@varmarv1108](https://github.com/varmarv1108))
-* 💻 ([@mohaomais](https://github.com/mohaomais))
-* 💻 ([@pupoxdev](https://github.com/pupoxdev))
+* 💻 **Mohamed Omais** ([@mohaomais](https://github.com/mohaomais))
 
 ---
 
