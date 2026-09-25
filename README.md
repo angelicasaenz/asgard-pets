@@ -19,25 +19,25 @@ Proyecto desarrollado en pareja simulando un entorno de trabajo colaborativo rea
 
 Asgard Pets requiere centralizar sus operaciones. Anteriormente, la información de clientes, stock de bodega y facturación vivía en registros dispersos y hojas de cálculo.
 
-Esta API REST solucionará la desorganización mediante una persistencia relacional confiable, prevención de errores de negocio (como vender productos sin stock o registrar ítems duplicados) y control de acceso basado en roles (`CLIENTE`, `EMPLEADO`, `ADMIN`, `PROVEEDOR`)[cite: 1, 4].
+Esta API REST solucionará la desorganización mediante una persistencia relacional confiable, prevención de errores de negocio (como vender productos sin stock o registrar ítems duplicados) y control de acceso basado en roles (`CLIENTE`, `EMPLEADO`, `ADMIN`, `PROVEEDOR`).
 
 ---
 
 ## 🛠️ Tecnologías Utilizadas
 
 * **Lenguaje:** Java 17
-* **Framework:** Spring Boot (Spring Web, Spring Data JPA, Spring Security)[cite: 1, 2, 5]
+* **Framework:** Spring Boot (Spring Web, Spring Data JPA, Spring Security)
 * **Base de Datos:** MySQL / MySQL Workbench
-* **Seguridad:** JSON Web Tokens (JWT) y BCrypt Password Encoder[cite: 1]
-* **Documentación y Pruebas:** Swagger UI / OpenAPI 3.0[cite: 1, 2]
-* **Gestor de Dependencias:** Maven[cite: 1, 2, 5]
-* **Control de Versiones:** Git y GitHub[cite: 1, 2, 5]
+* **Seguridad:** JSON Web Tokens (JWT) y BCrypt Password Encoder
+* **Documentación y Pruebas:** Swagger UI / OpenAPI 3.0
+* **Gestor de Dependencias:** Maven
+* **Control de Versiones:** Git y GitHub
 
 ---
 
 ## 🗂️ Arquitectura del Proyecto
 
-El sistema seguirá una **Arquitectura por Capas** estricta para garantizar el desacoplamiento y la mantenibilidad[cite: 1, 2, 5]:
+El sistema seguirá una **Arquitectura por Capas** estricta para garantizar el desacoplamiento y la mantenibilidad:
 
 ```text
 com.asgard.pets.backend
