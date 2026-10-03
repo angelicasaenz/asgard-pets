@@ -1,6 +1,13 @@
 package com.asgard.pets.backend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
@@ -19,15 +26,20 @@ public class Usuario {
     private String email;
     private String telefono;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Rol rol;
+
     public Usuario() {
     }
 
-    public Usuario(Long id, String cedula, String nombre, String email, String telefono) {
+    public Usuario(Long id, String cedula, String nombre, String email, String telefono, Rol rol) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
         this.email = email;
         this.telefono = telefono;
+        this.rol = rol;
     }
 
     public Long getId() { return id; }
@@ -44,17 +56,7 @@ public class Usuario {
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }
-}
 
-
-
-
-
-
-
-
-
-
-
-
-}
+    public Rol getRol() { return rol; }
+    public void setRol(Rol rol) { this.rol = rol; }
+    }

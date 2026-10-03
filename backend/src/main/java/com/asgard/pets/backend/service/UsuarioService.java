@@ -1,9 +1,13 @@
 package com.asgard.pets.backend.service;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.asgard.pets.backend.model.Usuario;
 import com.asgard.pets.backend.repository.UsuarioRepository;
-import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
 public class UsuarioService {
@@ -18,15 +22,17 @@ public class UsuarioService {
         return repository.findAll();
     }
 
-    public Usuario buscarPorId(Long id) {
-        return repository.findById(id).orElse(null);
+    public Usuario buscarPorCedula(String cedula) {
+        return repository.findByCedula(cedula)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Usuario con cédula " + cedula + " no encontrado"));
     }
 
     public Usuario guardar(Usuario usuario) {
+        if (repository.existsByCedula(usuario.getCedula())) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT, "Ya existe un usuario con la cédula " + usuario.getCedula());
+        }
         return repository.save(usuario);
-    }
-
-    public void eliminar(Long id) {
-        repository.deleteById(id);
     }
 }
