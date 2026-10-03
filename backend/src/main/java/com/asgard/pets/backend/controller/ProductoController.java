@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.asgard.pets.backend.model.Producto;
+import com.asgard.pets.backend.dto.ProductoDTO;
+import com.asgard.pets.backend.dto.ProductoRequest;
 import com.asgard.pets.backend.service.ProductoService;
 
 @RestController
@@ -27,26 +28,24 @@ public class ProductoController {
     }
 
     @GetMapping
-    public List<Producto> listar() {
+    public List<ProductoDTO> listar() {
         return service.listar();
     }
 
     @PostMapping
-    public ResponseEntity<Producto> crear(@RequestBody Producto producto) {
-        Producto creado = service.crear(producto);
+    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoRequest request) {
+        ProductoDTO creado = service.crear(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(creado);
     }
 
     @PutMapping("/{id}")
-    public Producto actualizar(@PathVariable Long id, @RequestBody Producto producto) {
-        return service.actualizar(id, producto);
+    public ProductoDTO actualizar(@PathVariable Long id, @RequestBody ProductoRequest request) {
+        return service.actualizar(id, request);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);
         return ResponseEntity.noContent().build();
-        }
-
-        }
-        
+    }
+}

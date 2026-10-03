@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.asgard.pets.backend.dto.UsuarioDTO;
+import com.asgard.pets.backend.dto.UsuarioRequest;
 import com.asgard.pets.backend.model.Usuario;
 import com.asgard.pets.backend.repository.UsuarioRepository;
 
@@ -18,21 +20,45 @@ public class UsuarioService {
         this.repository = repository;
     }
 
-    public List<Usuario> listar() {
-        return repository.findAll();
+    public List<UsuarioDTO> listar() {
+        return repository.findAll()
+                .stream()
+                .map(this::convertirADTO)
+                .toList();
     }
 
-    public Usuario buscarPorCedula(String cedula) {
-        return repository.findByCedula(cedula)
+    public UsuarioDTO buscarPorCedula(String cedula) {
+        Usuario usuario = repository.findByCedula(cedula)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Usuario con cédula " + cedula + " no encontrado"));
+        return convertirADTO(usuario);
     }
 
-    public Usuario guardar(Usuario usuario) {
-        if (repository.existsByCedula(usuario.getCedula())) {
+    public UsuarioDTO guardar(UsuarioRequest request) {
+        if (repository.existsByCedula(request.getCedula())) {
             throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "Ya existe un usuario con la cédula " + usuario.getCedula());
+                    HttpStatus.CONFLICT, "Ya existe un usuario con la cédula " + request.getCedula());
         }
-        return repository.save(usuario);
+
+        Usuario usuario = new Usuario();
+        usuario.setCedula(request.getCedula());
+        usuario.setNombre(request.getNombre());
+        usuario.setEmail(request.getEmail());
+        usuario.setTelefono(request.getTelefono());
+        usuario.setRol(request.getRol());
+
+        Usuario guardado = repository.save(usuario);
+        return convertirADTO(guardado);
+    }
+
+    private UsuarioDTO convertirADTO(Usuario usuario) {
+        return new UsuarioDTO(
+                usuario.getId(),
+                usuario.getCedula(),
+                usuario.getNombre(),
+                usuario.getEmail(),
+                usuario.getTelefono(),
+                usuario.getRol()
+        );
     }
 }

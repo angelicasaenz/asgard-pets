@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.asgard.pets.backend.model.Usuario;
+import com.asgard.pets.backend.dto.UsuarioDTO;
+import com.asgard.pets.backend.dto.UsuarioRequest;
 import com.asgard.pets.backend.service.UsuarioService;
 
 @RestController
@@ -25,18 +26,18 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<Usuario> listar() {
+    public List<UsuarioDTO> listar() {
         return service.listar();
     }
 
     @GetMapping("/{cedula}")
-    public Usuario buscarPorCedula(@PathVariable String cedula) {
+    public UsuarioDTO buscarPorCedula(@PathVariable String cedula) {
         return service.buscarPorCedula(cedula);
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario) {
-        Usuario creado = service.guardar(usuario);
+    public ResponseEntity<UsuarioDTO> crear(@RequestBody UsuarioRequest request) {
+        UsuarioDTO creado = service.guardar(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(creado);
     }
 }
