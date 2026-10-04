@@ -1,11 +1,26 @@
 package com.asgard.pets.backend.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+
 public class ProductoRequest {
 
+    @NotBlank(message = "El código es obligatorio")
     private String codigo;
+
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
+
     private String categoria;
+
+    @NotNull(message = "El precio es obligatorio")
+    @Positive(message = "El precio debe ser mayor a cero")
     private Double precio;
+
+    @NotNull(message = "El stock es obligatorio")
+    @PositiveOrZero(message = "El stock no puede ser negativo")
     private Integer stock;
 
     public ProductoRequest() {
