@@ -13,8 +13,8 @@ public class OpenApiConfig {
     public OpenAPI asgardPetsOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Asgard Pets")
-                        .description("Asgard Pets: distribuidora de alimento, medicina y accesorios para mascotas, que sostiene la fundación Aurora. Módulos documentados aquí: Usuario y Producto.")
+                        .title("Asgard Pets API")
+                        .description("API de Asgard Pets: distribuidora de alimento, medicina y accesorios para mascotas, que sostiene la fundación Aurora. Módulos documentados aquí: Usuario y Producto.")
                         .version("v1.0"));
     }
 }
