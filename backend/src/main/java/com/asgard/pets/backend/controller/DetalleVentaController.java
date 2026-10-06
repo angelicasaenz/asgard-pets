@@ -1,14 +1,20 @@
 package com.asgard.pets.backend.controller;
 
-import com.asgard.pets.backend.model.DetalleVenta;
+import com.asgard.pets.backend.dto.DetalleVentaRequest;
+import com.asgard.pets.backend.dto.DetalleVentaResponse;
 import com.asgard.pets.backend.service.DetalleVentaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/detalles-ventas")
+@RequestMapping("/api/detalles-venta")
+@Tag(name = "Detalles de Venta", description = "Endpoints para la gestión de ítems y control de stock")
 public class DetalleVentaController {
 
     private final DetalleVentaService detalleVentaService;
@@ -17,28 +23,21 @@ public class DetalleVentaController {
         this.detalleVentaService = detalleVentaService;
     }
 
-    // GET: http://localhost:8080/api/detalles-ventas
     @GetMapping
-    public List<DetalleVenta> obtenerTodos() {
-        return detalleVentaService.obtenerTodos();
+    @Operation(summary = "Obtener todos los detalles de ventas")
+    public ResponseEntity<List<DetalleVentaResponse>> obtenerTodos() {
+        return ResponseEntity.ok(detalleVentaService.obtenerTodos());
     }
 
-    // GET: http://localhost:8080/api/detalles-ventas/1
-    @GetMapping("/{id}")
-    public ResponseEntity<DetalleVenta> obtenerPorId(@PathVariable Long id) {
-        return detalleVentaService.obtenerPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    // POST: http://localhost:8080/api/detalles-ventas
     @PostMapping
-    public DetalleVenta guardar(@RequestBody DetalleVenta detalleVenta) {
-        return detalleVentaService.guardar(detalleVenta);
+    @Operation(summary = "Agregar un producto a una venta (Valida y descuenta stock)")
+    public ResponseEntity<DetalleVentaResponse> registrarDetalle(@Valid @RequestBody DetalleVentaRequest request) {
+        DetalleVentaResponse detalleCreado = detalleVentaService.registrarDetalle(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(detalleCreado);
     }
 
-    // DELETE: http://localhost:8080/api/detalles-ventas/1
     @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar un detalle de venta por su ID")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         detalleVentaService.eliminar(id);
         return ResponseEntity.noContent().build();
